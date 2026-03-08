@@ -19,7 +19,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #0B1026;
+            background: #0a0f1e;
             font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             color: #e0e0e0;
             overflow: hidden;
@@ -32,19 +32,19 @@
             z-index: 1;
         }
 
-        .helix-image {
-            width: clamp(200px, 40vw, 420px);
+        .helix-logo {
+            width: clamp(220px, 38vw, 380px);
             height: auto;
             margin-bottom: 2rem;
         }
 
         h1 {
             font-family: 'IBM Plex Sans', sans-serif;
-            font-size: clamp(2rem, 6vw, 4rem);
+            font-size: clamp(2.2rem, 6vw, 4.2rem);
             font-weight: 300;
-            letter-spacing: 0.08em;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #19E0FF 0%, #6C63FF 50%, #C46BFF 100%);
+            letter-spacing: 0.12em;
+            margin-bottom: 1.2rem;
+            background: linear-gradient(90deg, #5BC8E8 0%, #7B7FD4 30%, #9B6BC7 55%, #C46BCC 80%, #D06BBF 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -52,46 +52,49 @@
 
         .tagline {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(0.75rem, 1.5vw, 1rem);
-            color: #8A92A0;
-            letter-spacing: 0.3em;
+            font-size: clamp(0.65rem, 1.3vw, 0.85rem);
+            color: #7A8494;
+            letter-spacing: 0.35em;
             text-transform: uppercase;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
         }
 
         .divider {
-            width: 60px;
+            width: 50px;
             height: 2px;
-            background: linear-gradient(90deg, #19E0FF, #6C63FF);
-            margin: 0 auto 2.5rem;
+            background: linear-gradient(90deg, #5BC8E8, #9B6BC7);
+            margin: 0 auto 2rem;
         }
 
         .status {
-            font-size: 0.9rem;
-            color: #555;
-            letter-spacing: 0.05em;
+            font-size: 0.85rem;
+            color: #4A5060;
+            letter-spacing: 0.03em;
         }
 
         .glow {
             position: fixed;
-            width: 500px;
-            height: 500px;
             border-radius: 50%;
-            filter: blur(150px);
-            opacity: 0.12;
+            filter: blur(160px);
             pointer-events: none;
         }
 
         .glow-1 {
-            background: #6C63FF;
-            top: -150px;
-            right: -150px;
+            background: #4A2D7A;
+            width: 450px;
+            height: 450px;
+            top: -180px;
+            right: -120px;
+            opacity: 0.18;
         }
 
         .glow-2 {
-            background: #19E0FF;
-            bottom: -150px;
-            left: -150px;
+            background: #1A4A6A;
+            width: 400px;
+            height: 400px;
+            bottom: -200px;
+            left: -120px;
+            opacity: 0.12;
         }
     </style>
 </head>
@@ -99,7 +102,139 @@
     <div class="glow glow-1"></div>
     <div class="glow glow-2"></div>
     <div class="container">
-        <img src="QuantumHelix_helix.webp" alt="QuantumHelix DNA Helix" class="helix-image">
+        <!-- DNA Helix SVG - transparent background -->
+        <svg class="helix-logo" viewBox="0 0 520 180" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <!-- Main strand gradient: blue → cyan → violet -->
+                <linearGradient id="strandGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#4A6FD4"/>
+                    <stop offset="20%" stop-color="#3BA0E8"/>
+                    <stop offset="45%" stop-color="#3DE1F6"/>
+                    <stop offset="70%" stop-color="#6FA8FF"/>
+                    <stop offset="100%" stop-color="#9B6BC7"/>
+                </linearGradient>
+                <!-- Secondary strand: slightly different blue tones -->
+                <linearGradient id="strandGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#3A5FBE"/>
+                    <stop offset="25%" stop-color="#3890D8"/>
+                    <stop offset="50%" stop-color="#35D0E8"/>
+                    <stop offset="75%" stop-color="#5A8EE8"/>
+                    <stop offset="100%" stop-color="#8B5FB7"/>
+                </linearGradient>
+                <!-- Tail gradients for ribbon ends -->
+                <linearGradient id="tailLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#4A6FD4" stop-opacity="0.3"/>
+                    <stop offset="100%" stop-color="#4A6FD4"/>
+                </linearGradient>
+                <linearGradient id="tailRight" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#9B6BC7"/>
+                    <stop offset="100%" stop-color="#9B6BC7" stop-opacity="0.3"/>
+                </linearGradient>
+                <!-- Glow filter -->
+                <filter id="dotGlow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="1.5" result="blur"/>
+                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+                <filter id="strandGlow" x="-10%" y="-20%" width="120%" height="140%">
+                    <feGaussianBlur stdDeviation="2" result="blur"/>
+                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+            </defs>
+
+            <!-- === TOP STRAND (ribbon-like, sinusoidal) === -->
+            <!-- Left tail swoosh -->
+            <path d="M20,95 C35,105 50,110 65,100"
+                  fill="none" stroke="url(#tailLeft)" stroke-width="8" stroke-linecap="round" opacity="0.6"/>
+            <!-- Main top strand -->
+            <path d="M55,100 C85,40 130,30 170,70 C210,110 250,120 290,70 C330,20 370,30 410,80 C430,105 445,108 465,95"
+                  fill="none" stroke="url(#strandGrad)" stroke-width="7" stroke-linecap="round" filter="url(#strandGlow)" opacity="0.95"/>
+            <!-- Right tail swoosh -->
+            <path d="M455,98 C470,85 485,78 505,85"
+                  fill="none" stroke="url(#tailRight)" stroke-width="6" stroke-linecap="round" opacity="0.5"/>
+
+            <!-- === BOTTOM STRAND (opposite phase) === -->
+            <!-- Left tail swoosh -->
+            <path d="M20,85 C40,70 55,68 70,78"
+                  fill="none" stroke="url(#tailLeft)" stroke-width="7" stroke-linecap="round" opacity="0.5"/>
+            <!-- Main bottom strand -->
+            <path d="M60,80 C90,140 135,150 175,110 C215,70 255,60 295,110 C335,160 375,148 415,100 C435,75 448,70 465,82"
+                  fill="none" stroke="url(#strandGrad2)" stroke-width="7" stroke-linecap="round" filter="url(#strandGlow)" opacity="0.85"/>
+            <!-- Right tail swoosh -->
+            <path d="M458,85 C475,95 490,100 505,95"
+                  fill="none" stroke="url(#tailRight)" stroke-width="5" stroke-linecap="round" opacity="0.4"/>
+
+            <!-- === RUNGS (vertical connecting lines between strands) === -->
+            <!-- Left section rungs -->
+            <line x1="105" y1="58" x2="105" y2="122" stroke="#4A90D8" stroke-width="1.8" opacity="0.5"/>
+            <line x1="120" y1="50" x2="120" y2="130" stroke="#45A0E0" stroke-width="1.8" opacity="0.5"/>
+            <line x1="135" y1="46" x2="135" y2="134" stroke="#40B0E8" stroke-width="1.8" opacity="0.5"/>
+            <line x1="150" y1="48" x2="150" y2="132" stroke="#3DC0F0" stroke-width="1.8" opacity="0.5"/>
+            <line x1="165" y1="56" x2="165" y2="122" stroke="#3DD0F4" stroke-width="1.8" opacity="0.5"/>
+
+            <!-- Center section rungs -->
+            <line x1="195" y1="85" x2="195" y2="95" stroke="#3DE0F6" stroke-width="1.8" opacity="0.45"/>
+            <line x1="210" y1="95" x2="210" y2="85" stroke="#48D0F0" stroke-width="1.8" opacity="0.45"/>
+            <line x1="225" y1="105" x2="225" y2="75" stroke="#55C0EA" stroke-width="1.8" opacity="0.5"/>
+            <line x1="240" y1="110" x2="240" y2="70" stroke="#60B0E0" stroke-width="1.8" opacity="0.5"/>
+            <line x1="255" y1="112" x2="255" y2="68" stroke="#65A0D8" stroke-width="1.8" opacity="0.5"/>
+            <line x1="270" y1="108" x2="270" y2="72" stroke="#6A95D0" stroke-width="1.8" opacity="0.5"/>
+            <line x1="285" y1="98" x2="285" y2="82" stroke="#7088C8" stroke-width="1.8" opacity="0.45"/>
+
+            <!-- Right section rungs -->
+            <line x1="315" y1="72" x2="315" y2="130" stroke="#7580C4" stroke-width="1.8" opacity="0.5"/>
+            <line x1="330" y1="58" x2="330" y2="142" stroke="#7A78C0" stroke-width="1.8" opacity="0.5"/>
+            <line x1="345" y1="48" x2="345" y2="148" stroke="#8070BC" stroke-width="1.8" opacity="0.5"/>
+            <line x1="360" y1="48" x2="360" y2="142" stroke="#8568B8" stroke-width="1.8" opacity="0.5"/>
+            <line x1="375" y1="55" x2="375" y2="132" stroke="#8A62B4" stroke-width="1.8" opacity="0.5"/>
+            <line x1="390" y1="65" x2="390" y2="118" stroke="#9060B2" stroke-width="1.8" opacity="0.5"/>
+
+            <!-- === DOTS at rung endpoints (top) === -->
+            <!-- Left section - cyan/blue dots -->
+            <circle cx="105" cy="58" r="4" fill="#3A90D8" filter="url(#dotGlow)"/>
+            <circle cx="120" cy="50" r="4.5" fill="#3DA0E0" filter="url(#dotGlow)"/>
+            <circle cx="135" cy="46" r="5" fill="#3DB8EC" filter="url(#dotGlow)"/>
+            <circle cx="150" cy="48" r="4.5" fill="#3DD0F4" filter="url(#dotGlow)"/>
+            <circle cx="165" cy="56" r="4" fill="#3DE0F6" filter="url(#dotGlow)"/>
+
+            <!-- Center section dots -->
+            <circle cx="225" cy="75" r="3.5" fill="#50C8F0" filter="url(#dotGlow)"/>
+            <circle cx="240" cy="70" r="4" fill="#5AB8E8" filter="url(#dotGlow)"/>
+            <circle cx="255" cy="68" r="4.5" fill="#65A8E0" filter="url(#dotGlow)"/>
+            <circle cx="270" cy="72" r="4" fill="#7098D4" filter="url(#dotGlow)"/>
+            <circle cx="285" cy="82" r="3.5" fill="#7888C8" filter="url(#dotGlow)"/>
+
+            <!-- Right section - violet dots -->
+            <circle cx="315" cy="72" r="3.5" fill="#7A80C4" filter="url(#dotGlow)"/>
+            <circle cx="330" cy="58" r="4.5" fill="#8078C0" filter="url(#dotGlow)"/>
+            <circle cx="345" cy="48" r="5" fill="#8870BC" filter="url(#dotGlow)"/>
+            <circle cx="360" cy="48" r="4.5" fill="#9068B6" filter="url(#dotGlow)"/>
+            <circle cx="375" cy="55" r="4" fill="#9562B2" filter="url(#dotGlow)"/>
+            <circle cx="390" cy="65" r="3.5" fill="#9A5EAE" filter="url(#dotGlow)"/>
+
+            <!-- === DOTS at rung endpoints (bottom) === -->
+            <!-- Left section -->
+            <circle cx="105" cy="122" r="4" fill="#4090D8" filter="url(#dotGlow)"/>
+            <circle cx="120" cy="130" r="4.5" fill="#42A0E0" filter="url(#dotGlow)"/>
+            <circle cx="135" cy="134" r="5" fill="#3EB8EC" filter="url(#dotGlow)"/>
+            <circle cx="150" cy="132" r="4.5" fill="#3CD0F2" filter="url(#dotGlow)"/>
+            <circle cx="165" cy="122" r="4" fill="#3ADAF6" filter="url(#dotGlow)"/>
+
+            <!-- Center section -->
+            <circle cx="225" cy="105" r="3.5" fill="#50C8F0" filter="url(#dotGlow)"/>
+            <circle cx="240" cy="110" r="4" fill="#5AB8E8" filter="url(#dotGlow)"/>
+            <circle cx="255" cy="112" r="4.5" fill="#6AA0D8" filter="url(#dotGlow)"/>
+            <circle cx="270" cy="108" r="4" fill="#7590CC" filter="url(#dotGlow)"/>
+            <circle cx="285" cy="98" r="3.5" fill="#7C84C6" filter="url(#dotGlow)"/>
+
+            <!-- Right section -->
+            <circle cx="315" cy="130" r="3.5" fill="#7A7EC2" filter="url(#dotGlow)"/>
+            <circle cx="330" cy="142" r="4.5" fill="#8274BC" filter="url(#dotGlow)"/>
+            <circle cx="345" cy="148" r="5" fill="#8A6CB8" filter="url(#dotGlow)"/>
+            <circle cx="360" cy="142" r="4.5" fill="#9064B4" filter="url(#dotGlow)"/>
+            <circle cx="375" cy="132" r="4" fill="#955EAE" filter="url(#dotGlow)"/>
+            <circle cx="390" cy="118" r="3.5" fill="#9A5AAC" filter="url(#dotGlow)"/>
+        </svg>
+
         <h1>QuantumHelix.ai</h1>
         <p class="tagline">Something New Is Coming</p>
         <div class="divider"></div>
