@@ -1,0 +1,26 @@
+# Claude Code project config
+.claude/
+CLAUDE.md
+
+# Development & verification files
+verification/
+docs/
+verify_brand.js
+verify_brand.py
+
+# Design specs & mockups
+QuantumHelix_Branding.md
+QuantumHelix_Website_Spec.md
+QuantumHelix_Branding.png
+QuantumHelix_LandingPage.png
+QuantumHelix.png
+
+# Backup files
+index copy.html
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Plans
+.claude/plans/
