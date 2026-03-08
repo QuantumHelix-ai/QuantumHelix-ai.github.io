@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuantumHelix.ai</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -19,8 +16,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #0a0f1e;
-            font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0f;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             color: #e0e0e0;
             overflow: hidden;
         }
@@ -32,69 +29,64 @@
             z-index: 1;
         }
 
-        .helix-logo {
-            width: clamp(240px, 42vw, 440px);
+        .helix-strand {
+            width: clamp(260px, 45vw, 480px);
             height: auto;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         h1 {
-            font-family: 'IBM Plex Sans', sans-serif;
-            font-size: clamp(2.2rem, 6vw, 4.2rem);
+            font-size: clamp(2rem, 6vw, 4rem);
             font-weight: 300;
-            letter-spacing: 0.12em;
-            margin-bottom: 1.2rem;
-            background: linear-gradient(90deg, #5BC8E8 0%, #7B7FD4 30%, #9B6BC7 55%, #C46BCC 80%, #D06BBF 100%);
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #00d4ff, #7b2ff7, #ff2d95);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
         .tagline {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(0.65rem, 1.3vw, 0.85rem);
-            color: #7A8494;
-            letter-spacing: 0.35em;
+            font-size: clamp(0.9rem, 2vw, 1.2rem);
+            color: #888;
+            letter-spacing: 0.3em;
             text-transform: uppercase;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
 
         .divider {
-            width: 50px;
+            width: 60px;
             height: 2px;
-            background: linear-gradient(90deg, #5BC8E8, #9B6BC7);
-            margin: 0 auto 2rem;
+            background: linear-gradient(90deg, #00d4ff, #7b2ff7);
+            margin: 0 auto 2.5rem;
         }
 
         .status {
-            font-size: 0.85rem;
-            color: #4A5060;
-            letter-spacing: 0.03em;
+            font-size: 0.95rem;
+            color: #555;
+            letter-spacing: 0.05em;
         }
 
         .glow {
             position: fixed;
+            width: 400px;
+            height: 400px;
             border-radius: 50%;
-            filter: blur(160px);
+            filter: blur(120px);
+            opacity: 0.15;
             pointer-events: none;
         }
 
         .glow-1 {
-            background: #4A2D7A;
-            width: 450px;
-            height: 450px;
-            top: -180px;
-            right: -120px;
-            opacity: 0.18;
+            background: #7b2ff7;
+            top: -100px;
+            right: -100px;
         }
 
         .glow-2 {
-            background: #1A4A6A;
-            width: 400px;
-            height: 400px;
-            bottom: -200px;
-            left: -120px;
-            opacity: 0.12;
+            background: #00d4ff;
+            bottom: -100px;
+            left: -100px;
         }
     </style>
 </head>
@@ -102,175 +94,9 @@
     <div class="glow glow-1"></div>
     <div class="glow glow-2"></div>
     <div class="container">
-        <!-- DNA Helix SVG - single cycle, ribbon strands, transparent bg -->
-        <svg class="helix-logo" viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-                <!-- Strand gradient: deep blue → bright cyan (at left peak) → blue → violet -->
-                <linearGradient id="sg" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#2A50AA"/>
-                    <stop offset="18%" stop-color="#2A80CC"/>
-                    <stop offset="32%" stop-color="#00D4FF"/>
-                    <stop offset="50%" stop-color="#38A8E8"/>
-                    <stop offset="70%" stop-color="#5888D8"/>
-                    <stop offset="85%" stop-color="#7B70C8"/>
-                    <stop offset="100%" stop-color="#9060B8"/>
-                </linearGradient>
-                <!-- Highlight gradient for ribbon 3D effect -->
-                <linearGradient id="hl" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#4A70CC" stop-opacity="0.5"/>
-                    <stop offset="30%" stop-color="#40E8FF" stop-opacity="0.6"/>
-                    <stop offset="60%" stop-color="#60B0F0" stop-opacity="0.4"/>
-                    <stop offset="100%" stop-color="#A080D0" stop-opacity="0.3"/>
-                </linearGradient>
-                <!-- Left tail fill -->
-                <linearGradient id="tl" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#3060B8" stop-opacity="0"/>
-                    <stop offset="40%" stop-color="#3060B8" stop-opacity="0.3"/>
-                    <stop offset="100%" stop-color="#3878CC" stop-opacity="0.7"/>
-                </linearGradient>
-                <!-- Right tail fill -->
-                <linearGradient id="tr" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#8868B8" stop-opacity="0.7"/>
-                    <stop offset="60%" stop-color="#9060B0" stop-opacity="0.3"/>
-                    <stop offset="100%" stop-color="#9060B0" stop-opacity="0"/>
-                </linearGradient>
-                <!-- Glow filters -->
-                <filter id="dg" x="-50%" y="-50%" width="200%" height="200%">
-                    <feGaussianBlur stdDeviation="1.8" result="b"/>
-                    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-                </filter>
-            </defs>
-
-            <!-- ============================================ -->
-            <!-- LEFT TAIL SWOOSHES (flared blade shapes)     -->
-            <!-- ============================================ -->
-            <!-- Top-left tail: wide blade tapering to point -->
-            <path d="M18,78 C30,68 50,62 75,72 L75,82 C50,76 32,80 18,90 Z"
-                  fill="url(#tl)" opacity="0.65"/>
-            <path d="M18,90 C25,96 35,100 50,102 L75,95 L75,86 C55,92 38,94 18,90 Z"
-                  fill="url(#tl)" opacity="0.5"/>
-            <!-- Bottom-left tail -->
-            <path d="M18,108 C30,118 50,124 75,114 L75,104 C50,110 32,106 18,96 Z"
-                  fill="url(#tl)" opacity="0.55"/>
-            <path d="M18,96 C25,90 35,86 50,85 L75,92 L75,100 C55,94 38,92 18,96 Z"
-                  fill="url(#tl)" opacity="0.45"/>
-
-            <!-- ============================================ -->
-            <!-- RIGHT TAIL SWOOSHES                          -->
-            <!-- ============================================ -->
-            <!-- Top-right tail -->
-            <path d="M485,104 C500,96 515,90 540,94 L540,84 C518,80 502,84 485,92 Z"
-                  fill="url(#tr)" opacity="0.55"/>
-            <path d="M485,92 C500,86 518,82 540,84 L540,94 C520,90 505,92 485,100 Z"
-                  fill="url(#tr)" opacity="0.4"/>
-            <!-- Bottom-right tail -->
-            <path d="M485,112 C500,120 518,124 540,120 L540,110 C518,114 502,112 485,104 Z"
-                  fill="url(#tr)" opacity="0.45"/>
-
-            <!-- ============================================ -->
-            <!-- TOP STRAND - 3D ribbon (filled shape)        -->
-            <!-- Single arch: peaks left-center, crosses mid, -->
-            <!-- dips right-center                            -->
-            <!-- ============================================ -->
-            <!-- Outer edge (top of ribbon) -->
-            <path d="M72,88 C100,28 160,10 230,55 C270,80 295,95 320,95 C345,95 370,80 410,55 C455,22 490,78 490,100
-                     L486,106 C486,84 456,32 414,62 C374,88 350,102 320,102 C290,102 266,86 226,62 C164,20 106,36 76,94 Z"
-                  fill="url(#sg)" opacity="0.92"/>
-            <!-- Inner highlight for 3D depth -->
-            <path d="M80,88 C108,34 164,18 230,60 C268,82 294,96 320,96 C346,96 372,82 410,60 C452,30 484,80 486,100
-                     L484,104 C484,84 454,36 412,64 C374,86 348,100 320,100 C292,100 268,84 228,62 C166,24 112,38 82,92 Z"
-                  fill="url(#hl)" opacity="0.5"/>
-
-            <!-- ============================================ -->
-            <!-- BOTTOM STRAND - 3D ribbon (opposite phase)   -->
-            <!-- Dips left-center, crosses mid, peaks right   -->
-            <!-- ============================================ -->
-            <path d="M72,98 C100,158 160,176 230,131 C270,106 295,91 320,91 C345,91 370,106 410,131 C455,164 490,108 490,86
-                     L486,80 C486,102 456,154 414,124 C374,98 350,84 320,84 C290,84 266,100 226,124 C164,166 106,150 76,92 Z"
-                  fill="url(#sg)" opacity="0.78"/>
-            <!-- Inner highlight -->
-            <path d="M80,98 C108,152 164,168 230,126 C268,104 294,90 320,90 C346,90 372,104 410,126 C452,156 484,106 486,86
-                     L484,82 C484,102 454,150 412,122 C374,100 348,86 320,86 C292,86 268,102 228,124 C166,162 112,148 82,94 Z"
-                  fill="url(#hl)" opacity="0.35"/>
-
-            <!-- ============================================ -->
-            <!-- RUNGS - vertical connecting lines            -->
-            <!-- Left arch section (9 rungs, dense)           -->
-            <!-- ============================================ -->
-            <line x1="130" y1="38" x2="130" y2="148" stroke="#3580CC" stroke-width="2.2" opacity="0.7"/>
-            <line x1="145" y1="32" x2="145" y2="154" stroke="#2A90D8" stroke-width="2.2" opacity="0.75"/>
-            <line x1="160" y1="28" x2="160" y2="158" stroke="#20A0E0" stroke-width="2.2" opacity="0.8"/>
-            <line x1="175" y1="26" x2="175" y2="160" stroke="#18B0E8" stroke-width="2.3" opacity="0.8"/>
-            <line x1="190" y1="28" x2="190" y2="158" stroke="#10C0F0" stroke-width="2.3" opacity="0.8"/>
-            <line x1="205" y1="34" x2="205" y2="152" stroke="#08D0F8" stroke-width="2.2" opacity="0.75"/>
-            <line x1="220" y1="42" x2="220" y2="144" stroke="#10D4F8" stroke-width="2.2" opacity="0.7"/>
-            <line x1="235" y1="52" x2="235" y2="134" stroke="#20C8F0" stroke-width="2" opacity="0.65"/>
-            <line x1="250" y1="62" x2="250" y2="124" stroke="#30B8E8" stroke-width="2" opacity="0.55"/>
-
-            <!-- Right arch section (9 rungs) -->
-            <line x1="310" y1="124" x2="310" y2="62" stroke="#5090D4" stroke-width="2" opacity="0.55"/>
-            <line x1="325" y1="134" x2="325" y2="52" stroke="#5888D0" stroke-width="2" opacity="0.65"/>
-            <line x1="340" y1="144" x2="340" y2="42" stroke="#6080CC" stroke-width="2.2" opacity="0.7"/>
-            <line x1="355" y1="152" x2="355" y2="34" stroke="#6878C8" stroke-width="2.2" opacity="0.75"/>
-            <line x1="370" y1="158" x2="370" y2="28" stroke="#7070C4" stroke-width="2.3" opacity="0.8"/>
-            <line x1="385" y1="160" x2="385" y2="26" stroke="#7868C0" stroke-width="2.3" opacity="0.8"/>
-            <line x1="400" y1="158" x2="400" y2="28" stroke="#8060BC" stroke-width="2.2" opacity="0.8"/>
-            <line x1="415" y1="152" x2="415" y2="34" stroke="#8858B6" stroke-width="2.2" opacity="0.75"/>
-            <line x1="430" y1="142" x2="430" y2="44" stroke="#9050B0" stroke-width="2" opacity="0.65"/>
-
-            <!-- ============================================ -->
-            <!-- DOTS - top of rungs (cyan/bright)            -->
-            <!-- ============================================ -->
-            <!-- Left section - cyan tops -->
-            <circle cx="130" cy="38" r="4.5" fill="#2890D8" filter="url(#dg)"/>
-            <circle cx="145" cy="32" r="5" fill="#20A8E4" filter="url(#dg)"/>
-            <circle cx="160" cy="28" r="5.5" fill="#18C0F0" filter="url(#dg)"/>
-            <circle cx="175" cy="26" r="6" fill="#10D0F8" filter="url(#dg)"/>
-            <circle cx="190" cy="28" r="5.5" fill="#08D8FA" filter="url(#dg)"/>
-            <circle cx="205" cy="34" r="5" fill="#10D4F8" filter="url(#dg)"/>
-            <circle cx="220" cy="42" r="4.5" fill="#20C8F0" filter="url(#dg)"/>
-            <circle cx="235" cy="52" r="4" fill="#30B8E8" filter="url(#dg)"/>
-            <circle cx="250" cy="62" r="3.5" fill="#40A8E0" filter="url(#dg)"/>
-
-            <!-- Right section - violet/purple tops (these are the bottom visually) -->
-            <circle cx="310" cy="62" r="3.5" fill="#5090D4" filter="url(#dg)"/>
-            <circle cx="325" cy="52" r="4" fill="#5A88D0" filter="url(#dg)"/>
-            <circle cx="340" cy="42" r="4.5" fill="#6480CC" filter="url(#dg)"/>
-            <circle cx="355" cy="34" r="5" fill="#6E78C8" filter="url(#dg)"/>
-            <circle cx="370" cy="28" r="5.5" fill="#7870C4" filter="url(#dg)"/>
-            <circle cx="385" cy="26" r="6" fill="#8268C0" filter="url(#dg)"/>
-            <circle cx="400" cy="28" r="5.5" fill="#8860BC" filter="url(#dg)"/>
-            <circle cx="415" cy="34" r="5" fill="#8E58B6" filter="url(#dg)"/>
-            <circle cx="430" cy="44" r="4" fill="#9450B0" filter="url(#dg)"/>
-
-            <!-- ============================================ -->
-            <!-- DOTS - bottom of rungs (darker violet/indigo)-->
-            <!-- ============================================ -->
-            <!-- Left section bottoms - indigo/violet -->
-            <circle cx="130" cy="148" r="4.5" fill="#4A60B0" filter="url(#dg)"/>
-            <circle cx="145" cy="154" r="5" fill="#4858AA" filter="url(#dg)"/>
-            <circle cx="160" cy="158" r="5.5" fill="#4650A4" filter="url(#dg)"/>
-            <circle cx="175" cy="160" r="6" fill="#44489E" filter="url(#dg)"/>
-            <circle cx="190" cy="158" r="5.5" fill="#464EA2" filter="url(#dg)"/>
-            <circle cx="205" cy="152" r="5" fill="#4856A8" filter="url(#dg)"/>
-            <circle cx="220" cy="144" r="4.5" fill="#4A5EAE" filter="url(#dg)"/>
-            <circle cx="235" cy="134" r="4" fill="#5068B4" filter="url(#dg)"/>
-            <circle cx="250" cy="124" r="3.5" fill="#5670B8" filter="url(#dg)"/>
-
-            <!-- Right section bottoms - deep purple -->
-            <circle cx="310" cy="124" r="3.5" fill="#5A60B0" filter="url(#dg)"/>
-            <circle cx="325" cy="134" r="4" fill="#6058AC" filter="url(#dg)"/>
-            <circle cx="340" cy="144" r="4.5" fill="#6650A6" filter="url(#dg)"/>
-            <circle cx="355" cy="152" r="5" fill="#6C48A0" filter="url(#dg)"/>
-            <circle cx="370" cy="158" r="5.5" fill="#72409A" filter="url(#dg)"/>
-            <circle cx="385" cy="160" r="6" fill="#783896" filter="url(#dg)"/>
-            <circle cx="400" cy="158" r="5.5" fill="#7E3492" filter="url(#dg)"/>
-            <circle cx="415" cy="152" r="5" fill="#843090" filter="url(#dg)"/>
-            <circle cx="430" cy="142" r="4" fill="#882E8C" filter="url(#dg)"/>
-        </svg>
-
+        <img src="QuantumHelix_helix_strand.webp" alt="QuantumHelix DNA Helix" class="helix-strand">
         <h1>QuantumHelix.ai</h1>
-        <p class="tagline">Something New Is Coming</p>
+        <p class="tagline">Something new is coming</p>
         <div class="divider"></div>
         <p class="status">We're building something extraordinary. Stay tuned.</p>
     </div>
